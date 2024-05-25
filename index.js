@@ -4,11 +4,9 @@ let scoreHtml = document.getElementById("scoreHtml");
 function game() {
     score = 0;
     let timer = 0;
+    clearInterval(game);
 
     let game = setInterval(function(){
-        if(target){
-            field.removeChild(target);
-        };
         CreateTarget();
         timer++;
         if(timer=20){
@@ -32,6 +30,7 @@ function CreateTarget() {
         score = score + 50;
         scoreHtml.value = score;
     })
+    field.removeChild(target);
     field.appendChild(target);
 }
 
