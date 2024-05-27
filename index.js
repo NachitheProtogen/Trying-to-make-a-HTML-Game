@@ -4,17 +4,6 @@ let scoreHtml = document.getElementById("scoreHtml");
 function game() {
     score = 0;
     let timer = 0;
-
-    let game = setInterval(function(){
-        if(target){
-            field.removeChild(target);
-        };
-        CreateTarget();
-        timer++;
-        if(timer=20){
-            clearInterval(game);
-        }
-    },1000)
 };
 
 function CreateTarget() {
@@ -28,10 +17,12 @@ function CreateTarget() {
     target.style.top = Math.floor(Math.random() * (300 - 5 + 1)) + 5 + "px";
     target.id = "target"
     target.addEventListener("click", () => {
-        field.removeChild(target);
         score = score + 50;
         scoreHtml.value = score;
+        CreateTarget();
+        timer++;
     })
+    target.addEventListener("")
     field.appendChild(target);
 }
 
