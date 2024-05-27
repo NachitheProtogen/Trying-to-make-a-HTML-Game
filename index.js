@@ -1,9 +1,35 @@
 let score = 0;
 let scoreHtml = document.getElementById("scoreHtml");
+let timer = 0;
+let dificulty = [
+    {
+        name: "easy",
+        score: "0%",
+        active: true,
+    },{
+        name: "medium",
+        score: "10%",
+        active: false,
+    },{
+        name: "hard",
+        score: "20%",
+        active: false,
+    }
+];
+
+function setActiveDifficulty(levelName) {
+    dificulty.forEach(level => {
+        if (level.name === levelName) {
+            level.active = true;
+        } else {
+            level.active = false;
+        }
+    });
+};
 
 function game() {
     score = 0;
-    let timer = 0;
+    timer = 0;
 
     CreateTarget();
 };
@@ -66,4 +92,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 start.addEventListener("click", () => {
     game();
+});
+
+easy.addEventListener("click", () => {
+    setActiveDifficulty("easy");
+});
+
+normal.addEventListener("click", () => {
+    setActiveDifficulty("medium");
+});
+
+hard.addEventListener("click", () => {
+    setActiveDifficulty("hard");
 });
