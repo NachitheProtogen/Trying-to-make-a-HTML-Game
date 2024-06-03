@@ -29,13 +29,15 @@ function setActiveDifficulty(levelName) {
 
 function game() {
     score = 0;
-<<<<<<< HEAD
-    let timer = 0;
-=======
     timer = 0;
-
-    CreateTarget();
->>>>>>> 162be173714e69c600b5839631b1b9bf59f2641f
+    let legame = setInterval(function () {
+        if(timer!=21){
+        CreateTarget();
+    } else {
+        clearInterval(legame);
+    }  
+        
+    },1000)
 };
 
 function CreateTarget() {
@@ -49,14 +51,10 @@ function CreateTarget() {
     target.style.top = Math.floor(Math.random() * (300 - 5 + 1)) + 5 + "px";
     target.id = "target"
     target.addEventListener("click", () => {
+        field.removeChild(target);
         score = score + 50;
         scoreHtml.value = score;
-        CreateTarget();
-<<<<<<< HEAD
         timer++;
-    })
-    target.addEventListener("")
-=======
     })
     let targetyel = document.createElement("div"); //why am I doing this?
     targetyel.style.width = "50px";
@@ -71,7 +69,7 @@ function CreateTarget() {
         field.removeChild(target);
         score = score + 100;
         scoreHtml.value = score;
-        CreateTarget();
+        timer++;
     })
     let targetgoat = document.createElement("div"); //fucking hate this stupif j9s8hjd0jmsa0s8d9zhsad
     targetgoat.style.width = "20px";
@@ -86,10 +84,9 @@ function CreateTarget() {
         field.removeChild(target);
         score = score + 150;
         scoreHtml.value = score;
-        CreateTarget();
+        timer++;
     })
 
->>>>>>> 162be173714e69c600b5839631b1b9bf59f2641f
     field.appendChild(target);
     target.appendChild(targetyel);
     targetyel.appendChild(targetgoat);
